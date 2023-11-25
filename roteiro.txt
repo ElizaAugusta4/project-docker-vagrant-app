@@ -1,0 +1,69 @@
+Projeto Dockerizado com Node.js - Enredo
+Visão Geral:
+Este projeto visa demonstrar como configurar e executar uma aplicação Node.js utilizando Docker. A seguir estão os passos seguidos para atingir esse objetivo.
+
+Passo 1: Configuração do Ambiente de Desenvolvimento Virtualizado
+Utilização do Vagrant:
+bash
+Copy code
+vagrant init ubuntu/bionic64
+vagrant up
+vagrant ssh
+Passo 2: Preparação da Aplicação
+Estrutura do Projeto:
+
+bash
+Copy code
+mkdir projeto && cd projeto
+touch Dockerfile index.js package.json docker-compose.yml
+Conteúdo do Dockerfile:
+
+Dockerfile
+Copy code
+FROM node:14
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+EXPOSE 3000
+CMD ["npm", "start"]
+Passo 3: Dockerização da Aplicação
+Construção da Imagem Docker:
+
+bash
+Copy code
+docker build -t nome-da-imagem .
+Execução da Aplicação em um Contêiner:
+
+bash
+Copy code
+docker run -p 3000:3000 nome-da-imagem
+Passo 4: Utilização do docker-compose
+Configuração do docker-compose.yml:
+
+yaml
+Copy code
+version: '3'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+    command: npm start
+Execução usando docker-compose:
+
+bash
+Copy code
+docker-compose up
+Passo 5: Identificação e Resolução de Problemas
+Depuração e Ajustes:
+Localização de arquivos: Verificação se o arquivo index.js está no local correto.
+Correção de comandos: Garantir que o comando npm start referencie corretamente o index.js.
+Passo 6: Resultados e Aprendizados
+Conclusão do Projeto:
+Execução bem-sucedida da aplicação usando Docker e Node.js.
+Aprendizado sobre a importância da configuração adequada do ambiente de desenvolvimento e a utilidade dos contêineres para garantir consistência e portabilidade da aplicação.

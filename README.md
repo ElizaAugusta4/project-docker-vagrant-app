@@ -2,8 +2,6 @@
 Projeto feito com Docker, Node.js e Vagrant. 
 
 
-Claro, aqui está uma descrição simples e direta para o seu projeto no GitHub:
-
 Projeto Dockerizado com Node.js
 Este é um projeto básico que demonstra a configuração e execução de uma aplicação Node.js utilizando Docker. O objetivo principal é mostrar como utilizar contêineres Docker para facilitar o desenvolvimento e a execução de aplicações em diferentes ambientes.
 
